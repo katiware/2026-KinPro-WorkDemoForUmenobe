@@ -1,0 +1,139 @@
+[gd_scene load_steps=8 format=3 uid="uid://main_stage_scene_01"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_gm"]
+[ext_resource type="PackedScene" uid="uid://player_scene_01" path="res://scenes/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://coin_scene_01" path="res://scenes/coin.tscn" id="3_coin"]
+[ext_resource type="PackedScene" uid="uid://obstacle_scene_01" path="res://scenes/obstacle.tscn" id="4_obstacle"]
+[ext_resource type="PackedScene" uid="uid://goal_scene_01" path="res://scenes/goal.tscn" id="5_goal"]
+[ext_resource type="PackedScene" uid="uid://ui_scene_01" path="res://scenes/ui.tscn" id="6_ui"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(240, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ground"]
+size = Vector2(1600, 48)
+
+[node name="MainStage" type="Node2D" groups=["game_manager"]]
+script = ExtResource("1_gm")
+
+[node name="UI" parent="." instance=ExtResource("6_ui")]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Ground1" type="StaticBody2D" parent="World"]
+position = Vector2(700, 580)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Ground1"]
+shape = SubResource("RectangleShape2D_ground")
+
+[node name="ColorRect" type="ColorRect" parent="World/Ground1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -800.0
+offset_top = -24.0
+offset_right = 800.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.18, 0.24, 0.35, 1)
+
+[node name="Platform1" type="StaticBody2D" parent="World"]
+position = Vector2(360, 460)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Platform1"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="ColorRect" type="ColorRect" parent="World/Platform1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -12.0
+offset_right = 120.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.28, 0.38, 0.55, 1)
+
+[node name="Platform2" type="StaticBody2D" parent="World"]
+position = Vector2(680, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Platform2"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="ColorRect" type="ColorRect" parent="World/Platform2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -12.0
+offset_right = 120.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.28, 0.38, 0.55, 1)
+
+[node name="Platform3" type="StaticBody2D" parent="World"]
+position = Vector2(1000, 440)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Platform3"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="ColorRect" type="ColorRect" parent="World/Platform3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -120.0
+offset_top = -12.0
+offset_right = 120.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.28, 0.38, 0.55, 1)
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(100, 520)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_top = 0
+limit_right = 1500
+limit_bottom = 648
+position_smoothing_enabled = true
+
+[node name="Coins" type="Node2D" parent="."]
+
+[node name="Coin1" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(280, 520)
+
+[node name="Coin2" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(360, 400)
+
+[node name="Coin3" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(680, 300)
+
+[node name="Coin4" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(850, 520)
+
+[node name="Coin5" parent="Coins" instance=ExtResource("3_coin")]
+position = Vector2(1000, 380)
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Obstacle1" parent="Obstacles" instance=ExtResource("4_obstacle")]
+position = Vector2(550, 542)
+
+[node name="Obstacle2" parent="Obstacles" instance=ExtResource("4_obstacle")]
+position = Vector2(680, 334)
+
+[node name="Goal" parent="." instance=ExtResource("5_goal")]
+position = Vector2(1350, 556)
