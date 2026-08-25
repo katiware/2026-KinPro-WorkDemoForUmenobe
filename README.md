@@ -18,11 +18,12 @@
 
 ---
 
-## 📖 環境構築ガイド
+## 📖 ガイドドキュメント
 
-各技術のセットアップ手順、VSCodeの推奨設定、単一.exe化手順、トラブルシューティングは以下に詳しくまとめています：
+新入生が迷わず制作を進められるよう、2つの完全ガイドを用意しています：
 
-👉 **[初心者向け 環境構築完全ガイド (SETUP_GUIDE.md)](./SETUP_GUIDE.md)**
+- 👉 **[🛠️ 初心者向け 環境構築完全ガイド (SETUP_GUIDE.md)](./SETUP_GUIDE.md)**: 各ツールのインストール・起動手順・トラブルシューティング
+- 👉 **[📚 初学者向け ファイル役割＆構造解説ガイド (FILE_GUIDE.md)](./FILE_GUIDE.md)**: 各ファイルが何をしているかの詳細解説・改造逆引き表
 
 ---
 
@@ -34,9 +35,14 @@
 
 ### 2. Streamlit Webアプリ デモを実行
 ```bash
+# 【方法A: ローカルPythonで動かす場合】
 cd streamlit_demo
 pip install -r requirements.txt
 streamlit run app.py
+
+# 【方法B: 🐳 Dockerで動かす場合（Pythonインストール不要！）】
+docker compose up streamlit
+# -> ブラウザで http://localhost:8501 にアクセス
 ```
 
 ### 3. CustomTkinter デスクトップアプリ デモを実行

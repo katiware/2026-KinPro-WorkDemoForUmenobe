@@ -1,0 +1,26 @@
+# ==============================================================================
+# 2026-KinPro-WorkDemoForUmenobe: Docker Compose 設定ファイル
+# ------------------------------------------------------------------------------
+# 【使用方法】
+#   ・Streamlit WebアプリをDockerで起動する場合:
+#       docker compose up streamlit
+#   ・ブラウザで http://localhost:8501 にアクセスすると、ホストPCにPythonが無くても動作します！
+# ==============================================================================
+
+version: "3.8"
+
+services:
+  # 🌐 Streamlit Webアプリケーション
+  streamlit:
+    build:
+      context: ./streamlit_demo
+      dockerfile: Dockerfile
+    container_name: kinpro_streamlit_demo
+    ports:
+      - "8501:8501"
+    volumes:
+      # ソースコードをマウントして、ホスト側の変更をコンテナにホットリロード反映
+      - ./streamlit_demo:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    restart: unless-stopped
